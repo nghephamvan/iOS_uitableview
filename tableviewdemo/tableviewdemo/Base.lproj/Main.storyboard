@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="PkV-UH-UpA">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                <viewController autoresizesArchivedViewToFullSize="NO" id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -49,9 +50,6 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="28" width="400" height="572"/>
-                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="Jem-S8-Cja"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="9La-De-dlF"/>
@@ -59,19 +57,88 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="VYD-3o-Lg2" secondAttribute="bottom" id="A0a-f4-ucS"/>
+                            <constraint firstItem="VYD-3o-Lg2" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="A5l-f2-yYJ"/>
+                            <constraint firstItem="VYD-3o-Lg2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="HY0-lx-lIx">
+                                <variation key="widthClass=compact" constant="-20"/>
+                            </constraint>
+                            <constraint firstAttribute="trailingMargin" secondItem="VYD-3o-Lg2" secondAttribute="trailing" id="Osl-TS-5Zh">
+                                <variation key="widthClass=compact" constant="-20"/>
+                            </constraint>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="VYD-3o-Lg2" secondAttribute="bottom" id="Vz0-ji-Yqr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="VYD-3o-Lg2" secondAttribute="trailing" id="WCQ-jJ-8wh">
+                                <variation key="widthClass=compact" constant="-20"/>
+                            </constraint>
+                            <constraint firstItem="VYD-3o-Lg2" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="eNL-fb-go7"/>
+                            <constraint firstItem="VYD-3o-Lg2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="tfc-i2-uRn">
+                                <variation key="widthClass=compact" constant="-20"/>
+                            </constraint>
+                        </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="VYD-3o-Lg2"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="A5l-f2-yYJ"/>
+                                <exclude reference="HY0-lx-lIx"/>
+                                <exclude reference="Osl-TS-5Zh"/>
+                                <exclude reference="WCQ-jJ-8wh"/>
+                                <exclude reference="eNL-fb-go7"/>
+                                <exclude reference="tfc-i2-uRn"/>
+                                <exclude reference="A0a-f4-ucS"/>
+                                <exclude reference="Vz0-ji-Yqr"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="VYD-3o-Lg2"/>
                             </mask>
+                            <mask key="constraints">
+                                <include reference="A5l-f2-yYJ"/>
+                                <include reference="HY0-lx-lIx"/>
+                                <include reference="Osl-TS-5Zh"/>
+                                <include reference="WCQ-jJ-8wh"/>
+                                <include reference="eNL-fb-go7"/>
+                                <include reference="tfc-i2-uRn"/>
+                                <include reference="A0a-f4-ucS"/>
+                                <include reference="Vz0-ji-Yqr"/>
+                            </mask>
                         </variation>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" id="iuW-gJ-5jl">
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="qS0-zC-htQ">
+                            <connections>
+                                <action selector="btnEditTapped:" destination="BYZ-38-t0r" id="shV-8l-mel"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="2Lg-xU-hvz">
+                            <connections>
+                                <action selector="btnRefreshTapped:" destination="BYZ-38-t0r" id="x3u-cp-Y3e"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1057.5" y="136"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="l1t-fL-SvK">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PkV-UH-UpA" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="aXL-GJ-xz4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="KGl-A3-1g6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jbY-WF-coc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="139.5" y="136"/>
         </scene>

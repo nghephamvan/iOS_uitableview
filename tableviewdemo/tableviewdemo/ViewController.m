@@ -43,6 +43,10 @@
     cell.imageView.image = [UIImage imageNamed:imageArray[indexPath.row]];
     cell.textLabel.text = imageArray[indexPath.row];
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", (int)indexPath.row +1];
+    
+    cell.contentView.layer.cornerRadius = 8;
+    cell.contentView.layer.borderWidth = 0.5;
+    cell.contentView.layer.borderColor = [UIColor blackColor].CGColor;
     return cell	;
 }
 
@@ -53,4 +57,13 @@
         
     }
 }
+
+- (IBAction)btnEditTapped:(id)sender {
+    _tableview.editing = !_tableview.editing;
+}
+
+- (IBAction)btnRefreshTapped:(id)sender {
+    [_tableview reloadData];
+}
+
 @end
