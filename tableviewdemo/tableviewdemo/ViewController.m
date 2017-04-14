@@ -28,7 +28,7 @@
 }
 
 - (void) arraySetup {
-    imageArray = [NSMutableArray arrayWithArray:@[@"1.jpeg", @"2.jpg", @"3.jpeg", @"4.jpeg"]];
+    imageArray = [NSMutableArray arrayWithArray:@[@"1.jpg", @"2.jpg", @"3.jpg", @"4.jpg"]];
 }
 
 #pragma mark - UITableView DataSource Methods
@@ -39,6 +39,18 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellId = @"cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    
+    cell.imageView.image = [UIImage imageNamed:imageArray[indexPath.row]];
+    cell.textLabel.text = imageArray[indexPath.row];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", (int)indexPath.row +1];
     return cell	;
+}
+
+-(void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle==UITableViewCellEditingStyleDelete) {
+        [imageArray removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        
+    }
 }
 @end
