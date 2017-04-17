@@ -59,11 +59,16 @@
 }
 
 - (IBAction)btnEditTapped:(id)sender {
-    _tableview.editing = !_tableview.editing;
+    [[self tableview] setEditing:NO animated:YES];
+    [super setEditing:NO animated:YES];
+    
+    [[self tableview] setNeedsDisplay];
+    [[self tableview] reloadData];
+    // self.tableview.editing = !self.tableview.editing;
 }
 
 - (IBAction)btnRefreshTapped:(id)sender {
-    [_tableview reloadData];
+    [self.tableview reloadData];
 }
 
 @end
