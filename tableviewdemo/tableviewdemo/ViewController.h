@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
+    NSMutableArray *imageArray;
+}
+@property (weak, nonatomic) IBOutlet UITextField *txtInput;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+- (IBAction)btnEditTapped:(UIBarButtonItem *)sender;
+- (IBAction)btnRefreshTapped:(UIBarButtonItem *)sender;
 @end
 

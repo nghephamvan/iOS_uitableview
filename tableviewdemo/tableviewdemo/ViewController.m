@@ -8,10 +8,7 @@
 
 #import "ViewController.h"
 
-@interface ViewController () <UITableViewDataSource, UITableViewDelegate> {
-    NSMutableArray *imageArray;
-}
-@property (weak, nonatomic) IBOutlet UITableView *tableview;
+@interface ViewController ()
 @end
 
 @implementation ViewController
@@ -38,8 +35,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellId = @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-    
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:cellId];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+    }
     cell.imageView.image = [UIImage imageNamed:imageArray[indexPath.row]];
     cell.textLabel.text = imageArray[indexPath.row];
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", (int)indexPath.row +1];
@@ -50,25 +49,38 @@
     return cell	;
 }
 
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+}
+
 -(void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle==UITableViewCellEditingStyleDelete) {
         [imageArray removeObjectAtIndex:indexPath.row];
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
         
     }
 }
 
-- (IBAction)btnEditTapped:(id)sender {
-    [[self tableview] setEditing:NO animated:YES];
-    [super setEditing:NO animated:YES];
+- (UITableViewCellEditingStyle)tableView:(UITableView *)aTableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.tableView.editing)
+    {
+        return UITableViewCellEditingStyleDelete;
+    }
     
-    [[self tableview] setNeedsDisplay];
-    [[self tableview] reloadData];
-    // self.tableview.editing = !self.tableview.editing;
+    return UITableViewCellEditingStyleNone;
 }
 
-- (IBAction)btnRefreshTapped:(id)sender {
-    [self.tableview reloadData];
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (IBAction)btnEditTapped:(UIBarButtonItem *)sender {
+    self.tableView.editing = !self.tableView.editing;
+}
+
+- (IBAction)btnRefreshTapped:(UIBarButtonItem *)sender {
+    [self.tableView reloadData];
 }
 
 @end
