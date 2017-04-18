@@ -100,16 +100,7 @@
                                 <action selector="btnEditTapped:" destination="BYZ-38-t0r" id="oBR-jX-QOl"/>
                             </connections>
                         </barButtonItem>
-                        <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="gJ5-l7-4P7">
-                            <rect key="frame" x="-25" y="-30" width="97" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
-                            <connections>
-                                <outlet property="delegate" destination="BYZ-38-t0r" id="0hF-XA-IhA"/>
-                            </connections>
-                        </textField>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="2Lg-xU-hvz">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="2Lg-xU-hvz">
                             <connections>
                                 <action selector="btnRefreshTapped:" destination="BYZ-38-t0r" id="x3u-cp-Y3e"/>
                             </connections>
@@ -117,7 +108,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="VYD-3o-Lg2" id="43P-Os-gHe"/>
-                        <outlet property="txtInput" destination="gJ5-l7-4P7" id="UJL-FP-blU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
